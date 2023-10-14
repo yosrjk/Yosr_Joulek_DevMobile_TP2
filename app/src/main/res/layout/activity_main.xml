@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="@drawable/img_7"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/playfair_display"
+        android:gravity="center"
+        android:padding="30dp"
+        android:textStyle="bold"
+        android:textColor="@color/material_dynamic_primary0"
+        android:text="@string/title"
+        android:textSize="30sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:fontFamily="@font/acme"
+        android:max="120"
+        android:text="@string/sous_titre1"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
+    <SeekBar
+        android:id="@+id/sbAge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:max="120"
+        android:progress="50" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black"
+        android:layout_marginTop="20dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="120"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/acme"
+        android:text="@string/sous_titre"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+
+
+        />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+
+        <RadioButton
+            android:id="@+id/rbtOui"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:checked="true"
+            android:fontFamily="@font/acme"
+            android:text="Oui"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/rbtNon"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:checked="true"
+            android:fontFamily="@font/acme"
+            android:text="Non"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+    </RadioGroup>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Valeur mesurée (en mmol/l)"
+        android:textColor="#262630"
+        android:inputType="numberDecimal"
+        />
+    <Button
+        android:id="@+id/btnConsulter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/acme"
+        android:hint="CONSULTER"
+        android:textSize="18dp"
+        android:onClick="Calculer"
+        android:textColor="@color/black"
+        android:backgroundTint="#6969E3"
+/>
+
+</LinearLayout>
