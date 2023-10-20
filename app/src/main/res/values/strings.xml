@@ -3,10 +3,8 @@
     <string name="title">Mesure de niveau de glycemie\n</string>
     <string name="sous_titre1">Votre âge:</string>
     <string name="sous_titre"> Est ce que vous jeûnez ?</string>
-
-
-
-
+    <string name="val_text">Valeur mesurée (en mmol/l)</string>
+    <string name="resultat">Résultat :</string>
 
 
 </resources>
