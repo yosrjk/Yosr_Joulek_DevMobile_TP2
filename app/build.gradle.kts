@@ -4,7 +4,7 @@ plugins {
 
 android {
     namespace = "com.example.yosr_joulek_lsi3_mesure_de_glycemie"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.yosr_joulek_lsi3_mesure_de_glycemie"
