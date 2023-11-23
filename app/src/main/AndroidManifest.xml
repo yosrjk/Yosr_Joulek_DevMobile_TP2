@@ -13,7 +13,7 @@
         android:theme="@style/Theme.Yosr_Joulek_LSI3_Mesure_De_Glycemie"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".view.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
