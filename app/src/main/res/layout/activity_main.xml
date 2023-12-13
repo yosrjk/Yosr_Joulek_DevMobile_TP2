@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -102,7 +103,7 @@
         android:textColorHint="@color/black"
         android:textColor="@color/black"
         android:textSize="20sp"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         />
     <Button
         android:id="@+id/btnConsulter"
@@ -118,18 +119,6 @@
         android:textColorHint="@color/white"
         android:inputType="number"
 />
-    <TextView
-        android:id="@+id/tvResult"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="80dp"
-        android:fontFamily="@font/acme"
-        android:max="120"
-        android:text="@string/resultat"
-        android:textSize="20dp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        />
+
 
 </LinearLayout>

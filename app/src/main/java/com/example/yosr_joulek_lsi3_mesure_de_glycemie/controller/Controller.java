@@ -9,7 +9,7 @@ public final class Controller {
        //fait la 2 eme partie du update entre controller et model
        patient =new Patient(age,value,isfasting);
    }
-    private Controller(){
+    public Controller(){
        // appartient au user action
        super();
     }
@@ -19,9 +19,9 @@ public final class Controller {
        return Controller.instance;
     }
      public String getResultat(){
-       //fait la 1 ere partie du notify entre controller et view (1/2)
-       //fait la 2 eme partie du notify entre model et controller(2/2)
          return patient.getResultat();
+         //fait la 1 ere partie du notify entre controller et view (1/2)
+         //fait la 2 eme partie du notify entre model et controller(2/2)
      }
 
 }

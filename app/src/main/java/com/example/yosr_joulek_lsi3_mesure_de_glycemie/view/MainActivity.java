@@ -1,7 +1,8 @@
 package com.example.yosr_joulek_lsi3_mesure_de_glycemie.view;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -21,7 +22,9 @@ public class MainActivity extends AppCompatActivity {
     private RadioButton rbIsFasting, rbIsNotFasting;
     private EditText etValue;
     private Button btnConsulter;
-    private TextView tvResult;
+    private final int REQUEST_CODE = 1;
+
+
     private Controller controller = Controller.getInstance();
 
     @Override
@@ -39,12 +42,10 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-
             }
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-
             }
         });
 
@@ -70,13 +71,24 @@ public class MainActivity extends AppCompatActivity {
 
                 if (verifAge && verifValue) {
                     age = sbAge.getProgress();
-                    value = Float.valueOf(valueString); // Corrected this line
-                    // Partie 2 du user action entre view et controller
+                    value = Float.valueOf(valueString);
                     controller.CreatePatient(age, value, rbIsFasting.isChecked());
-                    tvResult.setText(controller.getResultat());
+                    Intent intent = new Intent(MainActivity.this, ConsultActivity.class);
+                    intent.putExtra("reponse", controller.getResultat());
+                    startActivityForResult(intent, REQUEST_CODE);
+
                 }
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE && resultCode == RESULT_CANCELED) {
+            Toast.makeText(MainActivity.this, "Erreur", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     private void init() {
@@ -86,10 +98,9 @@ public class MainActivity extends AppCompatActivity {
         rbIsNotFasting = findViewById(R.id.rbtNon);
         etValue = findViewById(R.id.etValue);
         btnConsulter = findViewById(R.id.btnConsulter);
-        tvResult = findViewById(R.id.tvResult);
-    }
 
-    public void calculer(View v) {
+    }
+    public void Calculer(View v) {
         int age;
         float value;
         boolean verifAge = false;
@@ -98,36 +109,18 @@ public class MainActivity extends AppCompatActivity {
         if (sbAge.getProgress() != 0) {
             verifAge = true;
         } else {
-            Toast.makeText(MainActivity.this, "veuillez verifier votre age", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, "Veuillez vérifier votre âge", Toast.LENGTH_SHORT).show();
         }
 
         if (!etValue.getText().toString().isEmpty()) {
             verifValue = true;
         } else {
-            Toast.makeText(MainActivity.this, "veuillez verifier votre valeur", Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this, "Veuillez vérifier votre valeur", Toast.LENGTH_LONG).show();
         }
 
         if (verifAge && verifValue) {
             age = sbAge.getProgress();
-            value = Float.valueOf(valueString);
-            if (rbIsFasting.isChecked()) {
-                if (age >= 10) {
-                    if (value < 5.0)
-                        tvResult.setText("Le niveau de glycemie est tres bas ");
-                    else if (value >= 5.0 && value <= 7.2)
-                        tvResult.setText("Le niveau de glycemie est normal ");
-                    else tvResult.setText("Le niveau de glycemie est elevé");
-
-                    if (age >= 6 && age <= 12)
-                        if (value < 5.0) tvResult.setText("Le niveau de glycemie est tres bas ");
-                        else if (value >= 5.0 && value <= 10.5) tvResult.setText("Le niveau de glycemie est normal ");
-                        else tvResult.setText("Le niveau de glycemie est elevé");
-                    else if (value < 5.5) tvResult.setText("Le niveau de glycemie est bas");
-                    else if (value >= 5.0 && value <= 10.0) tvResult.setText("Le niveau de glycemie est normal");
-                    else tvResult.setText("Le niveau de glycemie est elevé");
-                }
-            } else if (value < 10.5) tvResult.setText("Le niveau de glycemie est normal");
-            else tvResult.setText("Le niveau de glycemie est élevé");
+            value = Float.valueOf(etValue.getText().toString());
         }
     }
 }

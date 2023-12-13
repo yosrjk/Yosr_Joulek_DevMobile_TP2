@@ -1,10 +1,18 @@
 package com.example.yosr_joulek_lsi3_mesure_de_glycemie.model;
 
+import static android.app.Activity.RESULT_OK;
+
+import android.content.Intent;
+
 public class Patient {
-    private int age;
-    private float value;
-    private boolean isfasting;
+    int age;
+    float value;
+    boolean isfasting;
     private String resultat;
+    public String getResultat() {
+        //appartient a la premier partie du notify entre model et controller (1/2)
+        return resultat;
+    }
 
     public Patient(int age, float value, boolean isfasting) {
         //appartient a la premier partie de update entre controller et view
@@ -13,11 +21,8 @@ public class Patient {
         this.isfasting = isfasting;
         Calculer();
     }
-    public String getResultat() {
-        //appartient a la premier partie du notify entre model et controller (1/2)
-        return resultat;
-    }
-    private void Calculer() {
+
+    public void Calculer() {
         if (isfasting) {
             if (age >= 13) {
                 if (value < 5.0) {
@@ -50,6 +55,7 @@ public class Patient {
             }
 
         }
+
     }
 
 }
